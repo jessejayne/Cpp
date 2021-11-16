@@ -1,0 +1,40 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+
+void SortVector(vector<int>& myVec){ // def bubble swap function, pass by reference myVec to be sorted
+	   bool swap = true;
+      while(swap){
+        swap = false;
+        for (unsigned int i = 0; i < myVec.size()-1; i++) { // loops through myVec and swaps smallest to front until no swaps are performed
+            if (myVec[i]>myVec[i+1] ){
+                myVec[i] += myVec[i+1];
+                myVec[i+1] = myVec[i] - myVec[i+1];
+                myVec[i] -=myVec[i+1];
+                swap = true;
+            }
+        }
+    }
+}
+
+int main() {
+   vector<int> myVec; // init myVec, to be resized later with user input
+   unsigned int i; // loop variable for resize and output statements
+   int vecSize = 0; // user input variable
+   
+   cin >> vecSize; // get first user input for myVec resize
+   
+   myVec.resize(vecSize);
+   for(i = 0; i < myVec.size(); i++) { 
+      cin >> myVec.at(i); // gets remaining user input for each value in myVec
+   }
+   
+   SortVector(myVec); // call bubble sort function 
+   
+   for (i = 0; i < myVec.size(); i++) {
+      cout << myVec.at(i) << " "; // output sorted vec, one at a time followed by space. 
+   }
+   cout << endl;
+   return 0;
+}
